@@ -5,8 +5,7 @@ import './App.css';
 class App extends Component {
   // initial state
   state = {
-    contacts: contacts.slice(0, 5),
-    query: ''
+    contacts: contacts.slice(0, 5)
   };
 
   deleteContact = contactId => {
@@ -24,14 +23,12 @@ class App extends Component {
     if (this.state.contacts.find(contact => contact.id === random.id)) {
       // checking if we have not yet added all the contacts
       if (this.state.contacts.length < contacts.length) {
+        // try again with another random contact
         this.addContact();
       }
+      // don't do anything 
       return;
     }
-
-    // create a shallow copy
-    // const newContacts = [...this.state.contacts];
-    // newContacts.unshift(random);
 
     this.setState({
       contacts: [random, ...this.state.contacts]
@@ -100,7 +97,6 @@ class App extends Component {
             </tbody>
           </table>
         </div >
-
       </div>
     );
   }
